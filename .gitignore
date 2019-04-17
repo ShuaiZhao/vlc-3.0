@@ -53,3 +53,9 @@ build*
 contrib-*
 install-*
 
+
+
+.idea/
+CMakeLists.txt
+cmake-build-debug/
+
