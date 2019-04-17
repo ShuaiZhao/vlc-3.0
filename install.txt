@@ -1,0 +1,74 @@
+VLC 3.0 build on Ubuntu 16 LTS Desktop
+
+
+Prep your Linux Environment:
+============================================================
+sudo apt-get install git build-essential pkg-config libtool automake autopoint gettext
+sudo apt-get build-dep vlc
+
+add the the repo to your source list to access all the needed packages:
+============================================================
+sudo add-apt-repository ppa:mc3man/trusty-media
+sudo apt-get update and sudo apt-get upgrade
+
+install linux software center [optino]
+============================================================
+sudo apt-get install software-center
+
+Get the Source Code:
+============================================================
+git://git.videolan.org/vlc/vlc-3.0.git
+
+
+bootstrap and build:
+============================================================
+./bootstrap
+    // You might need to install bison and flex
+./configure 
+
+After ./configure
+libvlc configuration
+--------------------
+version               : 3.0.7
+system                : linux
+architecture          : x86_64 mmx sse sse2
+optimizations         : yes
+vlc aliases           : cvlc rvlc nvlc
+
+make.  // you can run ./vlc on the current work dir
+sudo make install // install on your system, default /usr/local/bin
+
+Install GUI:
+    sudo apt-get install phonon-backend-vlc
+
+
+NOTE: ============================================================
+1) upgrade to ffmpeg 3 if you saw the following error:
+    configure: error: Requested 'libavcodec >= 57.37.100' but version of libavcodec is 56.60.100. Pass --disable-avcodec to ignore this error.
+
+Steps:
+sudo add-apt-repository ppa:jonathonf/ffmpeg-3
+sudo apt update && sudo apt upgrade
+
+    
+2) commands for mannually install all packages:
+sudo apt-get -y install x264 libx264-dev a52-0.7.4 liba52-0.7.4-dev mpeg2dec libmpeg2-4-dev faad libfaad-dev faac libfaac-dev
+sudo apt-get -y install lame libmp3lame-dev ffmpeg libavdevice-dev libmad0 libmad0-dev  libschroedinger-dev
+sudo apt-get install libebml-dev libdca-dev twolame libtwolame-dev libmpcdec-dev libvorbisidec1 libvorbisidec-dev libass-dev
+sudo apt-get install libmatroska-dev  libdvbpsi-dev libmodplug1 libmodplug-dev libshout3 libshout3-dev  libdvdread4 libdvdnav4
+sudo apt-get install libdvdnav-dev livemedia-utils liblivemedia-dev libcddb2 libcddb2-dev libcdio13 libcdio-dev libxcb-composite0-dev
+sudo apt-get install libcdio-utils vcdimager libvcdinfo0 libvcdinfo-dev libgpg-error0 libgpg-error-dev libgcrypt11-dev libgcrypt11-dev
+sudo apt-get install gnutls-bin  libgnutls-dev libdap-bin libdap-dev libxml2 libxml2-dev libpng12-0 libpng12-dev
+sudo apt-get install libjpeg8 libtiff5 libsdl1.2-dev libsdl-image1.2 libsdl-image1.2-dev libc-bin gettext libfreetype6 libfreetype6-dev
+sudo apt-get install libfribidi-dev libfribidi0 zlib1g zlib1g-dev libtag1-dev libcaca0 libcaca-dev caca-utils  libqt4-dev
+sudo apt-get install libportaudio2 libupnp-dev libupnp6 libexpat1 libexpat1-dev yasm libxcb-xv0 libxcb-xv0-dev
+sudo apt-get install libx11-xcb1 libx11-xcb-dev liblua5.2-dev libswscale-dev
+sudo apt-get install libxcb-shm0-dev libxcb-xv0-dev libxcb-keysyms1-dev libxcb-randr0-dev libxcb-composite0-dev
+sudo apt-get install lua5.1
+sudo apt-get install libprotoc-dev
+sudo apt-get install libvlc5 
+sudo ldconfig 
+
+3) disable configure chromecast
+./configure --disable-chromecast  
+
